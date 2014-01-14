@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Spies - Example 1</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.13.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="http://sinonjs.org/releases/sinon-1.7.3.js"></script>
+  <script src="http://code.jquery.com/qunit/qunit-1.13.0.js"></script>
+
+  <script type="text/javascript">
+    var thing = {
+      callCallback: function(cb) {
+        cb();
+      }
+    }
+
+    module( "Spies" );
+    test( "should spy on a callback", function() {
+      var spy = sinon.spy();
+      thing.callCallback(spy);
+      ok(spy.called);
+    });
+  </script>
+</body>
+</html>
